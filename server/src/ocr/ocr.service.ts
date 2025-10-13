@@ -17,9 +17,9 @@ import { Injectable, Logger, InternalServerErrorException } from '@nestjs/common
 import Tesseract from 'tesseract.js';
 import pdfParse from 'pdf-parse';
 import axios from 'axios';
-import { kafkaService } from 'src/lib/kafka';
-import { redis } from 'src/lib/redis';
-import type { Event, OcrObject } from 'src/types';
+import { kafkaService } from '../lib/kafka';
+import { redis } from '../lib/redis';
+import type { Event, OcrObject } from '../types';
 
 @Injectable()
 export class OcrService {

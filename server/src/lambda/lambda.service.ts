@@ -1,12 +1,12 @@
 import { Injectable, Logger } from '@nestjs/common'
 import { Cron, CronExpression } from '@nestjs/schedule'
 import { ImapFlow } from 'imapflow'
-import { extractBody, extractAttachments } from 'src/helpers/parser'
-import { kafkaService } from 'src/lib/kafka'
+import { extractBody, extractAttachments } from '../helpers/parser'
+import { kafkaService } from '../lib/kafka'
 import { simpleParser, ParsedMail } from 'mailparser'
 import crypto from 'node:crypto'
-import { Event, IngestionObject } from 'src/types'
-import { redis } from 'src/lib/redis'
+import { Event, IngestionObject } from '../types'
+import { redis } from '../lib/redis'
 
 @Injectable()
 export class LambdaService {

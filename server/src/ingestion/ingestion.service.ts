@@ -14,12 +14,12 @@
  * - Publishes events for decoupled microservice communication.
  */
 import { Injectable, Logger, InternalServerErrorException } from '@nestjs/common';
-import dbConnect from 'src/helpers/db';
-import { kafkaService } from 'src/lib/kafka';
-import { redis } from 'src/lib/redis';
-import attachment from 'src/models/attachment';
-import submission from 'src/models/submission';
-import { Event, IngestionObject, OcrObject } from 'src/types';
+import dbConnect from '../helpers/db';
+import { kafkaService } from '../lib/kafka';
+import { redis } from '../lib/redis';
+import attachment from '../models/attachment';
+import submission from '../models/submission';
+import { Event, IngestionObject, OcrObject } from '../types';
 
 @Injectable()
 export class IngestionService {

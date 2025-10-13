@@ -13,7 +13,7 @@
 import { Module } from '@nestjs/common';
 import { ScheduleModule } from '@nestjs/schedule';
 import { LambdaService } from './lambda.service';
-import { CloudinaryService } from 'src/helpers/cloudinary.service';
+import { CloudinaryService } from '../helpers/cloudinary.service';
 
 @Module({
   imports: [

@@ -12,8 +12,8 @@
  * - Logs errors for observability and debugging.
  */
 import { Injectable, InternalServerErrorException, Logger } from '@nestjs/common';
-import attachment from 'src/models/attachment';
-import submission from 'src/models/submission';
+import attachment from '../models/attachment';
+import submission from '../models/submission';
 
 @Injectable()
 export class ProxyService {

@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
-import attachment from 'src/models/attachment';
-import submission from 'src/models/submission';
-import type { Event } from 'src/types';
+import attachment from '../models/attachment';
+import submission from '../models/submission';
+import type { Event } from '../types';
 
 @Injectable()
 export class EventPipelineService {

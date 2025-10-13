@@ -13,11 +13,11 @@
  * - Publishes events for decoupled microservice communication.
  */
 import { Injectable, Logger, InternalServerErrorException } from '@nestjs/common';
-import { kafkaService } from 'src/lib/kafka';
-import { redis } from 'src/lib/redis';
-import { AnalysisObject, ClassificationObject, Event } from 'src/types';
+import { kafkaService } from '../lib/kafka';
+import { redis } from '../lib/redis';
+import { AnalysisObject, ClassificationObject, Event } from '../types';
 import { GoogleGenAI } from "@google/genai";
-import { generateContent } from 'src/helpers/genAi'
+import { generateContent } from '../helpers/genAi'
 
 @Injectable()
 export class ClassificationService {

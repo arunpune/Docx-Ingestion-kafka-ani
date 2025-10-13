@@ -1,12 +1,13 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { ProxyController } from './proxy.controller';
+import { ProxyModule } from './proxy.module';
 
 describe('ProxyController', () => {
   let controller: ProxyController;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      controllers: [ProxyController],
+      imports: [ProxyModule],
     }).compile();
 
     controller = module.get<ProxyController>(ProxyController);

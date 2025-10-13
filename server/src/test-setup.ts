@@ -51,7 +51,7 @@ jest.mock('src/models/submission', () => ({
     find: jest.fn().mockReturnValue({ populate: jest.fn().mockResolvedValue([]) }),
     findOne: jest.fn().mockResolvedValue(null),
     updateOne: jest.fn().mockResolvedValue({ acknowledged: true, modifiedCount: 1 }),
-    create: jest.fn().mockImplementation(async (doc: any) => ({ ...doc, _id: 'sub1', id: doc.id })),
+    create: jest.fn(),
   },
 }));
 
@@ -59,7 +59,7 @@ jest.mock('src/models/attachment', () => ({
   __esModule: true,
   default: {
     updateOne: jest.fn().mockResolvedValue({ acknowledged: true, modifiedCount: 1 }),
-    create: jest.fn().mockImplementation(async (doc: any) => ({ ...doc, _id: 'att1' })),
+    create: jest.fn(),
   },
 }));
 
