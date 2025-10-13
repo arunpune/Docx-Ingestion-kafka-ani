@@ -1,0 +1,17 @@
+version: "3.8"
+
+services:
+  kafka:
+    container_name: kafka-container
+    image: apache/kafka
+    ports:
+      - 9092:9092
+    restart: "no"
+  
+  redis:
+    container_name: redis-container
+    image: redis
+    ports:
+      - 6379:6379
+    restart: "no"
+
