@@ -3,6 +3,18 @@ import attachment from '../models/attachment';
 import submission from '../models/submission';
 import type { Event } from '../types';
 
+
+/**
+ * EventPipelineService handles the event-driven updates for submissions and their attachments.
+ * This service is responsible for:
+ * - Updating submission status based on incoming events
+ * - Managing attachment metadata for submissions
+ * - Maintaining consistency between submission and attachment documents in the database
+ * 
+ * It processes events that contain submission metadata and attachment information,
+ * ensuring that both the submission status and related attachment data are updated atomically.
+ */
+
 @Injectable()
 export class EventPipelineService {
 
