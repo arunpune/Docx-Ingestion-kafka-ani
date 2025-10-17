@@ -104,8 +104,10 @@ A comprehensive document processing system that automatically ingests emails, ex
 
 ### 1. Clone the Repository
 ```bash
-git clone <repository-url>
-cd document-ingestion-dashboard
+git clone https://github.com/arunpune/Docx-Ingestion-kafka-ani.git
+
+Change directory to root i.e Docx-Ingestion-kafka-ani if necessary
+cd Docx-Ingestion-kafka-ani
 ```
 
 ### 2. Backend Setup
@@ -138,6 +140,8 @@ CLOUDINARY_CLOUD_NAME=your-cloud-name
 # Kafka
 KAFKA_BROKER=localhost:9092
 KAFKA_TOPIC=email-topic
+BOOTSTRAP_SERVER=localhost:9092
+KAFKAJS_NO_PARTITIONER_WARNING=1
 
 # Redis
 REDIS_HOST=localhost
@@ -145,11 +149,21 @@ REDIS_PORT=6379
 
 # Server
 PORT=3000
+
+#Gemini Api Key
+GEMINI_API_KEY=your-gemini-api-key
+
+DOC_PROMPT_INSTRUCTION="You are an expert AI document classification system trained to understand text layout, semantics, and context. Your goal is to identify the type of document accurately."
+DOC_PROMPT_CATEGORIES='["invoice", "receipt", "contract", "id_card", "resume"]'
+DOC_PROMPT_EXAMPLES="invoice: contains billing info, company names, payment details; receipt: includes prices, total, and items purchased; contract: includes parties, terms, signatures; id_card: has personal details and photo ID; resume: includes education, experience, and skills."
+CRON_SCHEDULE=*/30 * * * * *
 ```
 
 #### Start Infrastructure Services
 ```bash
 # Start Kafka and Redis using Docker Compose
+# Make Sure Your Docker Desktop is running
+cd server
 docker-compose up -d
 ```
 
@@ -158,12 +172,14 @@ The application will automatically create collections when first run.
 
 #### Run Backend
 ```bash
-# Development mode
-npm run dev
+# development
+$ pnpm run start
 
-# Production build
-npm run build
-npm run start:prod
+# watch mode
+$ pnpm run start:dev
+
+# production mode
+$ pnpm run start:prod
 ```
 
 ### 3. Frontend Setup
@@ -230,10 +246,10 @@ npm run start
 ## 🎯 Usage Guide
 
 ### Starting the System
-1. Start infrastructure: `docker-compose up -d`
-2. Start backend: `cd server && npm run dev`
+1. Start infrastructure: `cd server && docker-compose up -d`
+2. Start backend: `cd server && pnpm run start`
 3. Start frontend: `cd client && npm run dev`
-4. Access dashboard at `http://localhost:3000`
+4. Access dashboard at `http://localhost:4000 or check console for changes`
 
 ### Processing Flow
 1. **Email Detection**: System polls IMAP every 30 seconds
