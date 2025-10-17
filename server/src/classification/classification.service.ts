@@ -17,7 +17,7 @@ import { kafkaService } from '../lib/kafka';
 import { redis } from '../lib/redis';
 import { AnalysisObject, ClassificationObject, Event } from '../types';
 import { GoogleGenAI } from "@google/genai";
-import { generateContent } from '../helpers/genAi'
+import { buildClassificationPrompt, generateContent } from '../helpers/genAi'
 
 @Injectable()
 export class ClassificationService {
@@ -86,14 +86,7 @@ export class ClassificationService {
     //     ${text}
     //   `,
     //         });
-            const prompt = `
-        You are a document classifier.
-        Categories: ["invoice", "receipt", "contract", "id_card", "resume"].
-        Respond ONLY with a JSON object { "type": "...", "confidence": 0-1 }.
-
-        Document:
-        ${text}
-      `
+            const prompt = buildClassificationPrompt(text)
             const response = await generateContent(prompt);
 
             let output = response.text || "unknown";

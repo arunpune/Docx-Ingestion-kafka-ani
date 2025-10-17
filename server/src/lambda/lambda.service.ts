@@ -25,7 +25,11 @@ export class LambdaService {
    *
    * @returns {Promise<void>} Resolves when polling and processing are complete.
    */
-  @Cron(CronExpression.EVERY_30_SECONDS)
+  private readonly cronSchedule = process.env.CRON_SCHEDULE || '*/30 * * * * *';
+
+  @Cron(process.env.CRON_SCHEDULE || '*/30 * * * * *', {
+    name: 'document_classifier_job',
+  })
   async handleCron() {
     // if (this.isProcessing) {
     //   this.logger.warn('Previous polling still in progress, skipping...')
@@ -61,7 +65,7 @@ export class LambdaService {
 
       this.logger.log(`Found ${searchResults.length} unread emails`)
 
-      const processedCount = await this.processMessages(client, searchResults.reverse().slice(0,1));
+      const processedCount = await this.processMessages(client, searchResults.reverse().slice(0, 1));
 
       this.logger.log(`Successfully processed ${processedCount}/${searchResults.length} emails`)
 

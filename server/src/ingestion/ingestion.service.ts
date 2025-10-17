@@ -13,8 +13,7 @@
  * - Implements error handling for database operations.
  * - Publishes events for decoupled microservice communication.
  */
-import { Injectable, Logger, InternalServerErrorException } from '@nestjs/common';
-import dbConnect from '../helpers/db';
+import { Injectable, InternalServerErrorException, Logger } from '@nestjs/common';
 import { kafkaService } from '../lib/kafka';
 import { redis } from '../lib/redis';
 import attachment from '../models/attachment';
@@ -32,7 +31,6 @@ export class IngestionService {
      * @returns {Promise<void>} Resolves when ingestion workflow is complete.
      */
     async ingestion(message: IngestionObject): Promise<void> {
-        // await dbConnect();
         const sub = await submission.create({
             subject: message.metadata.subject,
             sender: message.metadata.sender,
