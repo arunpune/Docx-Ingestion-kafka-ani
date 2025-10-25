@@ -109,8 +109,23 @@ git clone https://github.com/arunpune/Docx-Ingestion-kafka-ani.git
 Change directory to root i.e Docx-Ingestion-kafka-ani if necessary
 cd Docx-Ingestion-kafka-ani
 ```
+### 2. Services  Setup
 
-### 2. Backend Setup
+```open account on 
+www.mongodb.com
+mongodb uri
+www.cloudinary.com
+cloudinary api's
+www.gmail.com
+
+
+```
+
+### 3. Docker  Setup
+setup docker engine
+start the docker desktop
+
+### 3. Backend Setup
 
 #### Install Dependencies
 ```bash
@@ -173,6 +188,7 @@ The application will automatically create collections when first run.
 #### Run Backend
 ```bash
 # development
+#which one to run ?
 $ pnpm run start
 
 # watch mode
